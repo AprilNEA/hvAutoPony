@@ -1,8 +1,29 @@
-import urllib.request
-import re
 import os
 import urllib
+import urllib.request
+from multiprocessing.pool import ThreadPool
+from time import time
 
+import requests
+
+urls=[
+("Event1"，"https://www.python.org/events/python-events/805/"),
+("Event2"，"https://www.python.org/events/python-events/801/"),
+("Event3"，"https://www.python.org/events/python-events/802/")，
+("Event4"，"https://www.python.org/events/python-events/803/")，
+("Event5"，"https://www.python.org/events/python-events/804/")
+]
+def url_response(url):
+	path,url='D:\Github\AutoPony-S\pony-Assort\pony_all',url
+	r=requests.get(url,stream=True)
+	with open(path,'wb')as f:
+		for ch in f:
+			f.write(ch)
+
+start=time()
+for x in urls:
+	url_response(x)
+print(f"time to download:{time()-start}")
 
 def get_html(url):
     page = urllib.request.urlopen(url)

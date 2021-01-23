@@ -24,7 +24,7 @@ def detect_option(target_path, template_path=None):
 
     #Read target imaged 读取图片上方选项
     target = cv2.imread(target_path, cv2.IMREAD_GRAYSCALE) #以灰度模式加载图片
-    target = target[:20, :700]
+    target = target[:20, :700] #读取选项栏
     match_results = []
     choices_id = []
     for template_i, template_path in enumerate(template_path):
@@ -32,7 +32,8 @@ def detect_option(target_path, template_path=None):
         result = cv2.matchTemplate(target, template, cv2.TM_SQDIFF_NORMED)
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
         match_results.append([template_i, min_val, min_loc])
-    #Get final result
+    
+    #Get final result 获取答案
     final_result = sorted(sorted(match_results, key=lambda x: x[1])[:3], key=lambda x: x[2][0])
     for match_result in final_result:
         choices_id.append(match_result[0])
@@ -53,9 +54,9 @@ def match_result(responses, options):
 
 
 #Directory of specific image 特殊图片位置
-path = 'pony_option'
+path = 'pony-Assort\pony_option'
 #Directory of all image 所有图片位置
-path_all = 'pony_all'
+path_all = 'pony-Assort\pony_img\pony1000'
 s = []
 
 #Check if arguments exists
@@ -67,7 +68,14 @@ else:
 if not filename:
     #Get all file names in the directory 获取目录下所有文件名
     files = os.listdir(path_all)
-    test_script(path_all, files)
+    #print(files)
+    #test_script(path_all, files)
+    files = os.listdir(path)
+    #Start detect 开始鉴定
+    #response = detect_pony(path + '/' + filename)
+    get_option = detect_option(path + '/' + filename)
+    #result_pony = match_result(response, get_option)
+    print(get_option)
 else:
     #Get all file names in the directory 获取目录下所有文件名
     files = os.listdir(path)
