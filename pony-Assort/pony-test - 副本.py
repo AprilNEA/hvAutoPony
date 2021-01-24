@@ -57,7 +57,7 @@ path = 'pony-Assort\pony_option'
 #Directory of all image
 path_all = 'pony-Assort\pony_img\pony1000'
 s = []
-""" 
+
 #Check if arguments exists
 if len(sys.argv) > 1:
     filename = sys.argv[1]
@@ -77,13 +77,4 @@ else:
     get_option = detect_option(path + '/' + filename)
     print(get_option)
     result_pony = match_result(response, get_option)
-    print(result_pony) """
-#Get all file names in the directory
-filename= '1.jpg'
-#Start detect
-#response = detect_pony(path + '/' + filename)
-#print(response)
-get_option = detect_option(path + '/' + filename)
-print(get_option)
-#result_pony = match_result(response, get_option)
-#print(result_pony) 
+    print(result_pony)
