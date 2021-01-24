@@ -27,5 +27,3 @@ pony_name = [
     'TWILIGHT SPARKLE']
 answer_list = ['A', 'B', 'C']
 pony_answer_list = csv.reader(open(answer_file,'r'))
-
-

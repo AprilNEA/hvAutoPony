@@ -8,6 +8,12 @@ import pprint
 import sys
 
 #Set pony list 设置小马分类及选项
+#RAINBOW DASH 0
+#RARITY 1
+#FLUTTERSHY 2
+#PINKIE PIE 3
+#APPLEJACK 4
+#TWILIGHT SPARKLE 5
 pony_name = ['RAINBOW DASH', 'RARITY', 'FLUTTERSHY', 'PINKIE PIE', 'APPLEJACK', 'TWILIGHT SPARKLE']
 answer_list = ['A', 'B', 'C']
 
@@ -51,36 +57,23 @@ def match_result(responses, options):
         return_response = {'is_chocie': False, 'status': status, 'reason': responses.error}
     result_info = json.dumps(return_response)
     return result_info
-
-
-#Directory of specific image 特殊图片位置
-path = 'pony-Assort\pony_option'
-#Directory of all image 所有图片位置
-path_all = 'pony-Assort\pony_img\pony1000'
+def detect_pony(target_path):
+    f = csv.reader(open('pony-Assort\pony1000.csv','r'))
+    
+path = 'pony-Assort\pony_option'#Directory of specific image 特殊图片位置
+path_all = 'pony-Assort\pony_img\pony1000'#Directory of all image 所有图片位置
 s = []
-
-#Check if arguments exists
-if len(sys.argv) > 1:
-    filename = sys.argv[1]
-else:
-    filename = False
-
-if not filename:
-    #Get all file names in the directory 获取目录下所有文件名
-    files = os.listdir(path_all)
-    #print(files)
-    #test_script(path_all, files)
-    files = os.listdir(path)
-    #Start detect 开始鉴定
-    #response = detect_pony(path + '/' + filename)
+#Get all file names in the directory 获取目录下所有文件名
+files = os.listdir(path_all)
+#print(files)
+#test_script(path_all, files)
+files = os.listdir(path)
+#Start detect 开始鉴定
+#response = detect_pony(path + '/' + filename)
+""" for filename in files:
+    print(path + '/' + filename)
     get_option = detect_option(path + '/' + filename)
-    #result_pony = match_result(response, get_option)
-    print(get_option)
-else:
-    #Get all file names in the directory 获取目录下所有文件名
-    files = os.listdir(path)
-    #Start detect 开始鉴定
-    response = detect_pony(path + '/' + filename)
-    get_option = detect_option(path + '/' + filename)
-    result_pony = match_result(response, get_option)
-    print(result_pony)
+    #result_pony = match_result(response, get_option)   
+    print(get_option) """
+get_option = detect_option(r'pony-Assort/0.jpg')
+print(get_option)
