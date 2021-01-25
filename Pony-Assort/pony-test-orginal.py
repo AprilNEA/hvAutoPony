@@ -1,9 +1,7 @@
-#from PIL import Image
+from PIL import Image # abc
 import numpy as np
-import json
-import requests
 import os
-import cv2
+import cv2 as cv2
 import pprint
 import sys
 
@@ -14,8 +12,8 @@ import sys
 #PINKIE PIE 3
 #APPLEJACK 4
 #TWILIGHT SPARKLE 5
-pony_name = ['RAINBOW DASH', 'RARITY', 'FLUTTERSHY', 'PINKIE PIE', 'APPLEJACK', 'TWILIGHT SPARKLE']
-answer_list = ['A', 'B', 'C']
+#pony_name = ['RAINBOW DASH', 'RARITY', 'FLUTTERSHY', 'PINKIE PIE', 'APPLEJACK', 'TWILIGHT SPARKLE']
+#answer_list = ['A', 'B', 'C']
 
 #Detect Options 检测选项
 def detect_option(target_path, template_path=None):
@@ -45,35 +43,4 @@ def detect_option(target_path, template_path=None):
         choices_id.append(match_result[0])
     return choices_id
 
-def match_result(responses, options):
-    obj = json.loads(responses.text)
-    find_option = np.argmax(obj['predictions'][0])
-    get_answer = answer_list[options.index(find_option)]
-    if responses.status_code == 200:
-        status = 'success'
-        return_response = {'is_chocie': True, 'status': status, 'answer': get_answer}
-    else:
-        status = 'failed'
-        return_response = {'is_chocie': False, 'status': status, 'reason': responses.error}
-    result_info = json.dumps(return_response)
-    return result_info
-def detect_pony(target_path):
-    f = csv.reader(open('pony-Assort\pony1000.csv','r'))
-    
-path = 'pony-Assort\pony_option'#Directory of specific image 特殊图片位置
-path_all = 'pony-Assort\pony_img\pony1000'#Directory of all image 所有图片位置
-s = []
-#Get all file names in the directory 获取目录下所有文件名
-files = os.listdir(path_all)
-#print(files)
-#test_script(path_all, files)
-files = os.listdir(path)
-#Start detect 开始鉴定
-#response = detect_pony(path + '/' + filename)
-""" for filename in files:
-    print(path + '/' + filename)
-    get_option = detect_option(path + '/' + filename)
-    #result_pony = match_result(response, get_option)   
-    print(get_option) """
-get_option = detect_option(r'pony-Assort/0.jpg')
-print(get_option)
+detect_option('D:/Github/AutoPony-S/pony-Assort/1.jpg')
