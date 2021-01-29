@@ -27,16 +27,15 @@ for match_result in final_result:
 print(match_results)
 print(final_result)
 print(choices_id)
-def match_pony(id):
-    id = {
-        'pony_option/0.jpg': 'RAINBOW DASH',
-        'pony_option/1.jpg': 'RARITY',
-        'pony_option/2.jpg': 'FLUTTERSHY',
-        'pony_option/3.jpg': 'PINKIE PIE',
-        'pony_option/4.jpg': 'APPLEJACK',
-        'pony_option/5.jpg': 'TWILIGHT SPARKLE'
+def matching_lambda(id):
+    matching_dict = lambda x: {
+        x == 'pony_option/0.jpg': 'RAINBOW DASH',
+        x == 'pony_option/1.jpg': 'RARITY',
+        x == 'pony_option/2.jpg': 'FLUTTERSHY',
+        x == 'pony_option/3.jpg': 'PINKIE PIE',
+        x == 'pony_option/4.jpg': 'APPLEJACK',
+        x == 'pony_option/5.jpg': 'TWILIGHT SPARKLE'
     }
- return 0
-
-
-
+    return matching_dict(id)[True]
+for id in choices_id:
+    print(matching_lambda(id))
