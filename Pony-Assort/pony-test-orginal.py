@@ -6,12 +6,7 @@ import pprint
 import sys
 
 #Set pony list 设置小马分类及选项
-#RAINBOW DASH 0
-#RARITY 1
-#FLUTTERSHY 2
-#PINKIE PIE 3
-#APPLEJACK 4
-#TWILIGHT SPARKLE 5
+#RAINBOW DASH 0 RARITY 1 FLUTTERSHY 2 PINKIE PIE 3 APPLEJACK 4 TWILIGHT SPARKLE 5
 #pony_name = ['RAINBOW DASH', 'RARITY', 'FLUTTERSHY', 'PINKIE PIE', 'APPLEJACK', 'TWILIGHT SPARKLE']
 #answer_list = ['A', 'B', 'C']
 
@@ -43,4 +38,4 @@ def detect_option(target_path, template_path=None):
         choices_id.append(match_result[0])
     return choices_id
 
-detect_option('D:/Github/AutoPony-S/pony-Assort/1.jpg')
+detect_option('D:\Github\AutoPony-S\pony-Assort\1.jpg')
