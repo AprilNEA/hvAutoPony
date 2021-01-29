@@ -59,7 +59,7 @@ for i in range(1, 1001):
     target = target[:40, :700]
     target = cv2.cvtColor(target, cv2.COLOR_RGB2GRAY)
     option_list = detect_option(target)
-    row = ["gs://pont1000testus/" + str(i) + ".jpg", match_answer(option_list[option])]
+    row = ["gs://pony1000testus/" + str(i) + ".jpg", match_answer(option_list[option])]
     if i == 3:
         print(answer[i][0])
         print(option_list)
