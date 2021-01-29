@@ -1,21 +1,22 @@
 import cv2
-import PIL
-#target = PIL.Image.open('D:\Github\AutoPony-S\pony-Assort\pony_img\pony1000\\1.jpg').convert('RGB')
-#target = cv2.imread("D:\Github\AutoPony-S\pony-Assort\pony_img\pony1000\\1.jpg")
-target = cv2.LoadImage(r"D:\Github\AutoPony-S\pony-Assort\pony_img\pony1000\1.jpg")
-target = target[:40, :700] #读取选项栏
-template = ['pony_option/0.jpg',
-            'pony_option/1.jpg',
-            'pony_option/2.jpg',
-            'pony_option/3.jpg',
-            'pony_option/4.jpg',
-            'pony_option/5.jpg']
+import matplotlib.pyplot as plt
+files = r'D:\Github\AutoPony-S\pony-Assort\pony_img\pony1000\3.jpg'
+target = plt.imread(files)
+target = target[..., ::-1]  # RGB --> BGR
+target = target[:40, :700]
+target = cv2.cvtColor(target, cv2.COLOR_RGB2GRAY)
+template = ['pony_option/20.jpg',
+            'pony_option/21.jpg',
+            'pony_option/22.jpg',
+            'pony_option/23.jpg',
+            'pony_option/24.jpg',
+            'pony_option/25.jpg']
 match_results = []
 choices_id = []
 for tem in template:
-    temp = cv2.imread(tem)
+    temp = cv2.imread(tem, cv2.IMREAD_GRAYSCALE)
     theight, twidth = temp.shape[:2]
-    result = cv2.matchTemplate(target, temp, cv2.TM_SQDIFF_NORMED)#cv2.TM_SQDIFF_NORMED
+    result = cv2.matchTemplate(target, temp, cv2.TM_SQDIFF_NORMED)
     #cv2.normalize(result, result, 0, 1, cv2.NORM_MINMAX, -1)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
     strmin_val = str(min_val)
@@ -32,12 +33,12 @@ print(final_result)
 print(choices_id)
 def matching_lambda(id):
     matching_dict = lambda x: {
-        x == 'pony_option/0.jpg': 'RAINBOW DASH',
-        x == 'pony_option/1.jpg': 'RARITY',
-        x == 'pony_option/2.jpg': 'FLUTTERSHY',
-        x == 'pony_option/3.jpg': 'PINKIE PIE',
-        x == 'pony_option/4.jpg': 'APPLEJACK',
-        x == 'pony_option/5.jpg': 'TWILIGHT SPARKLE'
+        x == 'pony_option/20.jpg': 'RAINBOW DASH',
+        x == 'pony_option/21.jpg': 'RARITY',
+        x == 'pony_option/22.jpg': 'FLUTTERSHY',
+        x == 'pony_option/23.jpg': 'PINKIE PIE',
+        x == 'pony_option/24.jpg': 'APPLEJACK',
+        x == 'pony_option/25.jpg': 'TWILIGHT SPARKLE'
     }
     return matching_dict(id)[True]
 for id in choices_id:
