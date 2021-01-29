@@ -34,9 +34,6 @@ def detect_option(target_path, template_path=None):
         match_results.append([template_i, min_val, min_loc])
     #Get final result
     final_result = sorted(sorted(match_results, key=lambda x: x[1])[:3], key=lambda x: x[2][0])
-    for match_result in final_result:
-        choices_id.append(match_result[0])
-    return choices_id
 
 def match_result(responses, options):
     obj = json.loads(responses.text)
