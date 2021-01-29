@@ -1,5 +1,8 @@
 import cv2
-target = cv2.imread("1.jpg")
+import PIL
+#target = PIL.Image.open('D:\Github\AutoPony-S\pony-Assort\pony_img\pony1000\\1.jpg').convert('RGB')
+#target = cv2.imread("D:\Github\AutoPony-S\pony-Assort\pony_img\pony1000\\1.jpg")
+target = cv2.LoadImage(r"D:\Github\AutoPony-S\pony-Assort\pony_img\pony1000\1.jpg")
 target = target[:40, :700] #读取选项栏
 template = ['pony_option/0.jpg',
             'pony_option/1.jpg',
