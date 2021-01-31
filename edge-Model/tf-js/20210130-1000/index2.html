@@ -1,0 +1,16 @@
+<script src="https://files.sukeycz.com/tf.min.js"></script>
+<script src="https://files.sukeycz.com/tf-automl.min.js"></script>
+<img id="daisy" crossorigin="anonymous" src="https://e.sukeycz.com/images/2021/01/30/3677.jpg">
+<script>
+async function run() {
+  const model = await tf.automl.loadImageClassification('model.json');
+  const image = document.getElementById('daisy');
+  const predictions = await model.classify(image);
+  console.log(predictions);
+  // Show the resulting object on the page.
+  const pre = document.createElement('pre');
+  pre.textContent = JSON.stringify(predictions, null, 2);
+  document.body.append(pre);
+}
+run();
+</script>
