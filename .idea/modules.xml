@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AutoPony-S.iml" filepath="$PROJECT_DIR$/.idea/AutoPony-S.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MashiroBot/.idea/MashiroBot.iml" filepath="$PROJECT_DIR$/../MashiroBot/.idea/MashiroBot.iml" />
     </modules>
   </component>
 </project>

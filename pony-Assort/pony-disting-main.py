@@ -1,8 +1,6 @@
 import cv2
 import csv
-import os
 import matplotlib.pyplot as plt
-
 def detect_option(target):
     match_results = []
     choices_id = []
@@ -40,6 +38,7 @@ template = ['pony_option/10.jpg',
                 'pony_option/13.jpg',
                 'pony_option/14.jpg',
                 'pony_option/15.jpg']
+
 answer = read_csv()
 pony_all = 'D:/Github/AutoPony-S/pony-Assort/pony_img/pony1000/'
 for i in range(1, 10):
@@ -56,6 +55,4 @@ for i in range(1, 10):
     target = target[:20, :700]
     option_list = detect_option(target)
     print(match_answer(option_list[option]))
-
-
 
