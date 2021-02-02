@@ -19,9 +19,9 @@ def match_answer(id):
         x == 'pony_option/0.jpg': 'RD',
         x == 'pony_option/1.jpg': 'RA',
         x == 'pony_option/2.jpg': 'FL',
-        x == 'pony_option/3.jpg': 'PI',
+        x == 'pony_option/3.jpg': 'PP',
         x == 'pony_option/4.jpg': 'AP',
-        x == 'pony_option/5.jpg': 'TW'
+        x == 'pony_option/5.jpg': 'TS'
     }
     return matching_dict(id)[True]
 
@@ -41,11 +41,11 @@ def option_main(img_path,answer):
     for i in option_list:
         ABCoption_list.append(match_answer(i))
     option = ABCoption_list.index(answer)
-    if option == 1:
+    if option == 0:
         return "A"
-    elif option == 2:
+    elif option == 1:
         return "B"
-    elif option == 3:
+    elif option == 2:
         return "C"
     else:
         return "Wrong"
