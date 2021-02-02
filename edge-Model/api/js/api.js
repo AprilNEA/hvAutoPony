@@ -1,22 +1,25 @@
 // ==UserScript==
-// @name        [HV] Fuck Pony
-// @description Why join the navy if you can be a pirate?
+// @name        Xuan Pony 
 // @icon        https://cdn.jsdelivr.net/npm/hvautoattack@0.0.0/assets/Setting.png
 // @run-at      document-end
 // @compatible  Chrome/Chromium + Tampermonkey
 // @compatible  Firefox + Greasemonkey
-// @version     0.0.0
+// @version     0.1.0
 // @include     https://*.org/ponytest*
+// @include     http://ponytest.sukeycz.com/
 // @include     http*://hentaiverse.org/*
 // @include     http://alt.hentaiverse.org/*
-// @include     http://ponytest.sukeycz.com/
 // @exclude     http*://hentaiverse.org/pages/showequip.php?*
 // @exclude     http://alt.hentaiverse.org/pages/showequip.php?*
 // @exclude     http*://hentaiverse.org/equip/*
 // @grant       GM_addStyle
+// @grant        GM_xmlhttpRequest
+// @grant        GM_download
+// @connect      localhost
+// @connect      127.0.0.1
 // ==/UserScript==
 
-const API_SERVER = '';
+const API_SERVER = 'http://127.0.0.1:5000/api';
 
 // ====== DO NOT EDIT THIS LINE BELOW ===== //
 
@@ -33,6 +36,7 @@ const showLog = (log) => {
 }
 
 async function imgOnload(img) {
+  
   showLog('开始获取小马图片 Base64 URL');
   const canvas = document.createElement('canvas');
   canvas.id = 'canvas';
@@ -46,7 +50,7 @@ async function imgOnload(img) {
 
   showLog('小马图片 Base64 URL 获取成功！');
   showLog('向 API 发送请求');
-
+/*
   const resp = (await (await fetch(API_SERVER, {
     method: 'POST',
     body: JSON.stringify({
@@ -57,15 +61,35 @@ async function imgOnload(img) {
       'content-type': 'application/json'
     }
   })).json());
-
-  if (resp.code === 0 && resp.answer) {
-    showLog(`获取到答案为：${resp.answer}`);
-    showLog(`服务器用时：${resp.time}`);
+*/
+  GM_xmlhttpRequest({
+    method: "POST",
+    url: "http://127.0.0.1:5000/api",
+    headers: {
+        "Content-Type": "application/json"
+        },
+    data: JSON.stringify({
+        base64: base64Data
+      }),
+    onload: function(response){
+        const rp=response.responseText
+/*
+        if (rp=="A"||rp=="B"||rp=="C"){
+          gE('#riddleanswer').value=rp
+          gE('#riddleanswer+img').click()
+        }*/
+        //console.log("请求成功");
+        //console.log(response.responseText);
+        console.log(response.responseText);
+  },
+  //if (resp.code === 0 && resp.answer) {
+    showLog(`获取到答案为：${rp}`);
+    //showLog(`服务器用时：${resp.time}`);
 
     setTimeout(() => {
       const inputEl = document.getElementById('riddleanswer');
       if (inputEl) {
-        inputEl.value = resp.answer;
+        inputEl.value = rp;
         document.querySelector('#riddleanswer+img')?.click();
       }
     }, 2000);
