@@ -1,6 +1,6 @@
 import cv2
 import matplotlib.pyplot as plt
-
+#matplotlib==3.0.3
 def detect_option(target):
     match_results = []
     choices_id = []
