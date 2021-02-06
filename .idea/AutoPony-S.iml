@@ -7,5 +7,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="MashiroBot" />
+    <orderEntry type="module" module-name="autoPonySite" />
   </component>
 </module>

@@ -16,21 +16,22 @@ def detect_option(target):
 
 def match_answer(id):
     matching_dict = lambda x: {
-        x == 'pony_option/0.jpg': 'RD',
-        x == 'pony_option/1.jpg': 'RA',
-        x == 'pony_option/2.jpg': 'FL',
-        x == 'pony_option/3.jpg': 'PP',
-        x == 'pony_option/4.jpg': 'AP',
-        x == 'pony_option/5.jpg': 'TS'
+        x == 'autopony/0.jpg': 'RD',
+        x == 'autopony/1.jpg': 'RA',
+        x == 'autopony/2.jpg': 'FL',
+        x == 'autopony/3.jpg': 'PP',
+        x == 'autopony/4.jpg': 'AP',
+        x == 'autopony/5.jpg': 'TS'
     }
     return matching_dict(id)[True]
 
-template = ['pony_option/0.jpg',
-                'pony_option/1.jpg',
-                'pony_option/2.jpg',
-                'pony_option/3.jpg',
-                'pony_option/4.jpg',
-                'pony_option/5.jpg']
+template = ['autopony/0.jpg',
+                'autopony/1.jpg',
+                'autopony/2.jpg',
+                'autopony/3.jpg',
+                'autopony/4.jpg',
+                'autopony/5.jpg']
+
 
 def option_main(img_path,answer):
     target = plt.imread(img_path)
