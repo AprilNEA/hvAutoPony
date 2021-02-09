@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AutoPony-S.iml" filepath="$PROJECT_DIR$/.idea/AutoPony-S.iml" />
       <module fileurl="file://$PROJECT_DIR$/../MashiroBot/.idea/MashiroBot.iml" filepath="$PROJECT_DIR$/../MashiroBot/.idea/MashiroBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../TgBark/.idea/TgBark.iml" filepath="$PROJECT_DIR$/../TgBark/.idea/TgBark.iml" />
       <module fileurl="file://$PROJECT_DIR$/../autoPonySite/.idea/autoPonySite.iml" filepath="$PROJECT_DIR$/../autoPonySite/.idea/autoPonySite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../autoWelcome/.idea/autoWelcome.iml" filepath="$PROJECT_DIR$/../autoWelcome/.idea/autoWelcome.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hvLog/.idea/hvLog.iml" filepath="$PROJECT_DIR$/../hvLog/.idea/hvLog.iml" />
     </modules>
   </component>
 </project>

@@ -16,32 +16,32 @@ def detect_option(target):
 
 def match_answer(id):
     matching_dict = lambda x: {
-        x == 'pony_option/10.jpg': 'RAINBOW DASH',
-        x == 'pony_option/11.jpg': 'RARITY',
-        x == 'pony_option/12.jpg': 'FLUTTERSHY',
-        x == 'pony_option/13.jpg': 'PINKIE PIE',
-        x == 'pony_option/14.jpg': 'APPLEJACK',
-        x == 'pony_option/15.jpg': 'TWILIGHT SPARKLE'
+        x == 'pony_option/0.jpg': 'RD',
+        x == 'pony_option/1.jpg': 'R',
+        x == 'pony_option/2.jpg': 'FL',
+        x == 'pony_option/3.jpg': 'PP',
+        x == 'pony_option/4.jpg': 'AP',
+        x == 'pony_option/5.jpg': 'TS'
     }
     return matching_dict(id)[True]
 
 def read_csv():
     answer = []
-    answer_csv = csv.reader(open('D:\Github\AutoPony-S\pony-Assort\csv\pony1000.csv', 'r'))
+    answer_csv = csv.reader(open('answers3.csv', 'r'))
     for i in answer_csv:
         answer.append(i)
     return answer
 
-template = ['pony_option/10.jpg',
-                'pony_option/11.jpg',
-                'pony_option/12.jpg',
-                'pony_option/13.jpg',
-                'pony_option/14.jpg',
-                'pony_option/15.jpg']
+template = ['pony_option/0.jpg',
+                'pony_option/1.jpg',
+                'pony_option/2.jpg',
+                'pony_option/3.jpg',
+                'pony_option/4.jpg',
+                'pony_option/5.jpg']
 
 answer = read_csv()
-pony_all = 'D:/Github/AutoPony-S/pony-Assort/pony_img/pony1000/'
-for i in range(1, 10):
+pony_all = 'pony/'
+for i in range(1, 1000000):
     option = 0
     if answer[i] == "A":
         option = 1
