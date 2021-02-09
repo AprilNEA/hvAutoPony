@@ -8,5 +8,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="MashiroBot" />
     <orderEntry type="module" module-name="autoPonySite" />
+    <orderEntry type="module" module-name="hvLog" />
+    <orderEntry type="module" module-name="TgBark" />
+    <orderEntry type="module" module-name="autoWelcome" />
   </component>
 </module>

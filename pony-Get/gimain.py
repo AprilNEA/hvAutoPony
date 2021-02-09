@@ -1,7 +1,9 @@
 import requests
-for i in range(1, 20001):
-    url = "http://wsi.prave.men/pics/" + str(i) + ".jpeg"
-    out = 'pony20000/' + str(i) + ".jpeg"
-    down = requests.get(url)
-    open('out', 'wb').write(down.content)
-    print(url + "Finished")
+a = [100000,200000,300000,400000,500000,600000,700000,800000,900000,1000000,1100000]
+for i in a:
+    url =
+    out = f"/home/g2150499438/pony/{i}.jpeg"
+
+    with open(out, 'wb') as code:
+        code.write(down.content)
+    print(f"第{i}张马图下载完毕{down}")

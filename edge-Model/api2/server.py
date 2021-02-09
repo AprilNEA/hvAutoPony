@@ -135,7 +135,9 @@ def do(uid):
     if code == 1 or code == 2:
         back = {'return': [{'code': code}]}
         return jsonify(back)
-
+    if int(timesleft) <= 0:
+        code = 3
+        return {'return': [{'code': code}]}
     base64 = data["base64"]
     answer, time_pony, pony = autopony(base64)
     back = {
