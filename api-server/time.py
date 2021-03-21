@@ -1,6 +1,6 @@
 import datetime
 import sqlite3
-import time
+
 
 def doSth():
     conn = sqlite3.connect('sqlite/pony.db')

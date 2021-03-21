@@ -2,7 +2,7 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/edge-Model/api" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/api" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -11,5 +11,7 @@
     <orderEntry type="module" module-name="hvLog" />
     <orderEntry type="module" module-name="TgBark" />
     <orderEntry type="module" module-name="autoWelcome" />
+    <orderEntry type="module" module-name="pythonProject1" />
+    <orderEntry type="module" module-name="hvsimulator" />
   </component>
 </module>
