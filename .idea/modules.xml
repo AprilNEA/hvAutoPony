@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/../autoPonySite/.idea/autoPonySite.iml" filepath="$PROJECT_DIR$/../autoPonySite/.idea/autoPonySite.iml" />
       <module fileurl="file://$PROJECT_DIR$/../autoWelcome/.idea/autoWelcome.iml" filepath="$PROJECT_DIR$/../autoWelcome/.idea/autoWelcome.iml" />
       <module fileurl="file://$PROJECT_DIR$/../hvLog/.idea/hvLog.iml" filepath="$PROJECT_DIR$/../hvLog/.idea/hvLog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hvsimulator/.idea/hvsimulator.iml" filepath="$PROJECT_DIR$/../hvsimulator/.idea/hvsimulator.iml" />
+      <module fileurl="file://$USER_HOME$/pythonProject1/.idea/pythonProject1.iml" filepath="$USER_HOME$/pythonProject1/.idea/pythonProject1.iml" />
     </modules>
   </component>
 </project>
