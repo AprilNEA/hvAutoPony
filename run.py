@@ -1,19 +1,10 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-# @author: sukeycz
-# @license: AGPL-3.0 License
-# @contact: sukeycz0@gmail.com
-# @software: PyCharm
-# @project : hvAutoPony
-# @file: run.py
-# @time: 2021/7/12 17:37
-# @desc:
+# gun.py
 import multiprocessing
 
 # 协程需要此补丁
 # form gevent import monkey
 # monkey.patch_all()
-# 其他非uvicorn需打开此配置
+# 其他非uvicorn需打开此配置 
 # worker_class = "gevent"
 
 # ip + port
