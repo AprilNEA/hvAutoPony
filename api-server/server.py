@@ -60,8 +60,6 @@ def option_main(img_path,answer):
 
 
 def container_predict(encoded_image, port_number=8501):
-   # with io.open(image_file_path, 'rb') as image_file:
-   #     encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
     instances = {
             'instances': [
                     {'image_bytes': {'b64': str(encoded_image)},
@@ -77,20 +75,16 @@ def autopony(encoded_image):
     file = open('1.jpg', 'wb')
     file.write(img_data)
     file.close()
-    #print(encoded_image)
 
     start = time.process_time()
     answer_json = container_predict(encoded_image)
 
     most_prob = 0
     for i in range(1, 6):
-        #print(answer_json['predictions'][0]['scores'][i])
-        #print(answer_json['predictions'][0]['scores'][most_prob])
+
         if (answer_json['predictions'][0]['scores'][i] > answer_json['predictions'][0]['scores'][most_prob]):
             most_prob = i
     option = answer_json['predictions'][0]['labels'][most_prob]
-    #print(option)
-    #print(option_main(pony_path,option))
     end = time.process_time()
     print(end - start)
     time_pony = str((end - start) * 1000) + "ms"
