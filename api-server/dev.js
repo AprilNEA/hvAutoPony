@@ -1,32 +1,25 @@
 // ==UserScript==
-// @name        XuanPonyTest
-// @description Why join the navy if you can be a pirate?
-// @icon        https://cdn.jsdelivr.net/npm/hvautoattack@0.0.0/assets/Setting.png
+// @name        AutoPony Pro
 // @run-at      document-end
 // @compatible  Chrome/Chromium + Tampermonkey
 // @compatible  Firefox + Greasemonkey
-// @version     0.0.1
+// @version     1.0.1
 // @include     https://*.org/ponytest*
 // @include     http*://hentaiverse.org/*
 // @include     http://alt.hentaiverse.org/*
-// @include     https://e-hentai.org/news.php*
 // @exclude     http*://hentaiverse.org/pages/showequip.php?*
-// @exclude     http://alt.hentaiverse.org/pages/showequip.php?*
-// @exclude     http*://hentaiverse.org/equip/*
+// @exclude     http://alt.hentaiverse.org/*pages/showequip.php?*
+// @exclude     http*://hentaiverse.org/*equip/*
 // @grant       GM_addStyle
-// @grant       unsafeWindow
 // @grant       GM_xmlhttpRequest
 // @grant       GM_download
-// @run-at      document-end
+// @grant       unsafeWindow
 // @connect     localhost
 // @connect     127.0.0.1
-// @connect     118.194.233.153
-//
+
 // ==/UserScript==
 
-const API_SERVER = '118.194.233.153';
-const Uid = '3146277'
-const Password ='131477'
+const API_SERVER = '127.0.0.1';
 
 // ====== DO NOT EDIT THIS LINE BELOW ===== //
 
@@ -59,7 +52,7 @@ async function imgOnload(img) {
 
   showLog('小马图片 Base64 URL 获取成功！');
   showLog('向 API 发送请求');
- 
+
   GM_xmlhttpRequest({
     method: "POST",
     url: `http://${API_SERVER}/pony/api/post/${Uid}/`,
