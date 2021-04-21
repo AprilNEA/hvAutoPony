@@ -1,3 +1,6 @@
 *.pb
 *.bin
 *.DS_Store
+config.*
+edge-Model/TF-Container/tensorflow_model_server
+edge-Model/TF-Container/tensorflow_model_server

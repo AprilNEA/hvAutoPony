@@ -1,10 +1,25 @@
 import cv2
-import matplotlib.pyplot as plt
-files = r'D:\Github\AutoPony-S\pony-Assort\pony_img\pony1000\3.jpg'
-target = plt.imread(files)
-target = target[..., ::-1]  # RGB --> BGR
+#import matplotlib.pyplot as plt
+import base64
+
+import numpy as np
+
+files = r'D:\Github\hvAutoPony\pony-Assort\pony_img\pony1000\3.jpg'
+
+img_file = open(files, 'rb')  # 二进制打开图片文件
+img_b64encode = base64.b64encode(img_file.read())  # base64编码
+img_file.close()  # 文件关闭
+img_b64decode = base64.b64decode(img_b64encode)  # base64解码
+# fromstring => formbuffer
+img_array = np.frombuffer(img_b64decode, np.uint8)  # 转换np序列
+target = cv2.imdecode(img_array, cv2.COLOR_BGR2RGB)  # 转换Opencv格式
+
+
+#arget = plt.imread(files)
+#target = target[..., ::-1]  # RGB --> BGR
 target = target[:40, :700]
 target = cv2.cvtColor(target, cv2.COLOR_RGB2GRAY)
+
 template = ['pony_option/20.jpg',
             'pony_option/21.jpg',
             'pony_option/22.jpg',

@@ -1,0 +1,6 @@
+matplotlib==3.3.4
+requests==2.25.0
+opencv_python==4.4.0.46
+Flask_Cors==3.0.10
+Flask==1.1.2
+mysql_connector_repackaged==0.3.1
