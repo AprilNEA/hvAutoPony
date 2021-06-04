@@ -1,5 +1,4 @@
-*.pb
-*.bin
 *.DS_Store
 config.*
 /.idea
+/bin/model/TF-Container/tensorflow_model_server
