@@ -99,7 +99,7 @@ def do(uid):
     data = request.get_data(as_text=True)
     data = json.loads(str(data))
     word = data["pass"]
-    conn = sqlite3.connect('sqlite/pony.db')
+    conn = sqlite3.connect('../../db/pony.db')
     c = conn.cursor()
     cursor = c.execute("SELECT UID,PASS,NAME,GENRE,TIME,TIMESLEFT,TIMESALL from USERPONY")
     for row in cursor:
