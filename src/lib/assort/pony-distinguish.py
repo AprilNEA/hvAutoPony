@@ -4,7 +4,7 @@ import base64
 
 import numpy as np
 
-files = r'D:\Github\hvAutoPony\pony-Assort\pony_img\pony1000\3.jpg'
+files = r'D:\Github\hvAutoPony\public\pony_img\pony1000\3.jpg'
 
 img_file = open(files, 'rb')  # 二进制打开图片文件
 img_b64encode = base64.b64encode(img_file.read())  # base64编码
@@ -19,13 +19,13 @@ target = cv2.imdecode(img_array, cv2.COLOR_BGR2RGB)  # 转换Opencv格式
 #target = target[..., ::-1]  # RGB --> BGR
 target = target[:40, :700]
 target = cv2.cvtColor(target, cv2.COLOR_RGB2GRAY)
-
-template = ['pony_option/20.jpg',
-            'pony_option/21.jpg',
-            'pony_option/22.jpg',
-            'pony_option/23.jpg',
-            'pony_option/24.jpg',
-            'pony_option/25.jpg']
+OPTION_IMG_ADDRESS = "public/pony_option"
+template = [f'{OPTION_IMG_ADDRESS}/20.jpg',
+            f'{OPTION_IMG_ADDRESS}/21.jpg',
+            f'{OPTION_IMG_ADDRESS}/22.jpg',
+            f'{OPTION_IMG_ADDRESS}/23.jpg',
+            f'{OPTION_IMG_ADDRESS}/24.jpg',
+            f'{OPTION_IMG_ADDRESS}/25.jpg']
 match_results = []
 choices_id = []
 for tem in template:
