@@ -8,10 +8,11 @@
 # @file: sqlite.py
 # @time: 2021/6/5 19:40
 # @desc:
-
+import os
+import settings
 import sqlite3
 
-DB_ADDRESS = "../db/pony.db"
+DB_ADDRESS = os.path.join(settings.DatabaseLocation, "pony.db")
 USERTABLE_NAME = "USERPONY"
 
 
@@ -85,7 +86,7 @@ def user_exist(uid, password):
     try:
         conn = sqlite3.connect(DB_ADDRESS)
     except sqlite3.DatabaseError:
-        print("数据库连接错误")
+        print("检查用户是否存在时数据库连接错误")
         return False
     try:
         c = conn.cursor()
@@ -104,7 +105,6 @@ def user_exist(uid, password):
                 return False
         else:
             return False
-
 
 
 def user_delete(uid):
@@ -166,13 +166,29 @@ def log_add(log):
         return False
     try:
         c = conn.cursor()
-        sql = f'INSERT INTO USERLOG (UID,NAME,IP,REAL_UID) VALUES ({log.uid},"{log.name}","{log.ip}",{log.real_uid})'
+        sql = f"SELECT IP,REAL_UID from USERLOG where UID = {log.uid}"
         c.execute(sql)
-        conn.commit()
     except sqlite3.ProgrammingError:
         print("SQL语句错误")
         return False
     else:
-        print("日志添加成功")
-        return True
+        results = c.fetchall()
+        if results:
+            for result in results:
+                if not log.real_uid == result[1] and log.ip == result[0]:
+                    try:
+                        c = conn.cursor()
+                        sql = f'INSERT INTO USERLOG (UID,NAME,IP,REAL_UID) VALUES ({log.uid},"{log.name}","{log.ip}",{log.real_uid})'
+                        c.execute(sql)
+                        conn.commit()
+                    except sqlite3.ProgrammingError:
+                        print("SQL语句错误")
+                        return False
+                    else:
+                        print("日志添加成功")
+                        return True
     conn.close()
+
+
+if __name__ == '__main__':
+    print(DB_ADDRESS)
