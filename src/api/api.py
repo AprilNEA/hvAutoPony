@@ -10,8 +10,9 @@
 # @desc:
 import uvicorn
 
-from db import sqlite
+from src.db import sqlite
 from src.lib.assort.assort import autopony
+
 from typing import Optional
 
 from fastapi import FastAPI
@@ -39,6 +40,7 @@ def read_item(item_id: int, q: Optional[str] = None):
 
 @app.post("/pony/api/post/{uid}/")
 def main(uid: int, info: Info):
+    print(info)
     exist = sqlite.user_exist(uid, info.password)
     if exist:
         print(exist)
@@ -57,11 +59,13 @@ def main(uid: int, info: Info):
             }
             return {"code": 0, "genre": 0, "return": back}
         elif genre == 1:
+            # 检查存量是否充足
             if charges > 0:
                 answer, pony = autopony(info.base64Data)
-                sqlite.update(uid, counter, counter + 1)
-                sqlite.update(uid, charges, charges - 1)
-                sqlite.update(uid, counter_all, counter_all + 1)
+                sqlite.update(uid, "counter", counter + 1)
+                if not sqlite.update(uid, charges, charges - 1):
+                    pass  # 错误日志
+                sqlite.update(uid, "counter_all", counter_all + 1)
                 back = {
                     "name": name,
                     "answer": answer,
@@ -75,11 +79,9 @@ def main(uid: int, info: Info):
                 return {"code": 1}
         elif genre == 2:
             pass
-    elif exist == 3:
-        return 3
     else:
-        return
+        return {"code": 2}
 
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="127.0.0.1", port=5000, log_level="info")
+    uvicorn.run("api:app", host="127.0.0.1", port=5001, log_level="info")
