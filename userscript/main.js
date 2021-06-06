@@ -1,12 +1,13 @@
 // ==UserScript==
-// @name        XuanPonyTest
-// @description Why join the navy if you can be a pirate?
+// @name        XuanPony New
 // @icon        https://cdn.jsdelivr.net/npm/hvautoattack@0.0.0/assets/Setting.png
 // @run-at      document-end
 // @compatible  Chrome/Chromium + Tampermonkey
 // @compatible  Firefox + Greasemonkey
-// @version     0.0.1
+// @version     2.0.1
 // @include     https://*.org/ponytest*
+// @include     https://ponytest.pages.dev/
+// @include     https://test.autopony.ltd/*
 // @include     http*://hentaiverse.org/*
 // @include     http://alt.hentaiverse.org/*
 // @include     https://e-hentai.org/news.php*
@@ -20,15 +21,16 @@
 // @run-at      document-end
 // @connect     localhost
 // @connect     127.0.0.1
-// @connect     
+// @connect
 //
 // ==/UserScript==
 
-const API_SERVER = '';
+
 const Uid = ''
 const Password =''
 
 // ====== DO NOT EDIT THIS LINE BELOW ===== //
+const API_SERVER = 'http://127.0.0.1:5001';
 
 const showLog = (log) => {
   let logEl = document.getElementById('pre');
@@ -59,38 +61,52 @@ async function imgOnload(img) {
 
   showLog('小马图片 Base64 URL 获取成功！');
   showLog('向 API 发送请求');
- 
+
   GM_xmlhttpRequest({
     method: "POST",
-    url: `http://${API_SERVER}/pony/api/post/${Uid}/`,
+    url: `${API_SERVER}/pony/api/post/${Uid}/`,
     headers: {
         "Content-Type": "application/json"
         },
     data: JSON.stringify({
-        base64: base64Data,
-        pass: Password
+        base64Data: base64Data,
+        password: Password,
+        user_id:1,
+        ponyimg_token:1
       }),
     onload: function(response){
         //console.log(response.responseText);
         console.log(response);
         var back = JSON.parse(response.responseText);
-        back = back.return[0]
-        const rp = back.answer
-        //console.log(back);
-        console.log(rp);
-        if (rp=="A"||rp=="B"||rp=="C"){
-            gE('#riddleanswer').value=rp
-            gE('#riddleanswer+img').click()
-        }else {
-            showLog('服务器出错');
+        if (back.code == 0){
+            result = back.return
+            genre = back.genre
+            const rp = back.answer
+            console.log(rp);
+            showLog(`欢迎使用自动小马：${result.name}`)
+            if (genre == 0){
+                showLog('账户类型：永久使用')
+            }else if (genre == 1){
+                showLog('账户类型：按量付费')
+                showLog(`您的小马剩余：${result.charges}`)
+            }
+            showLog(`您的小马总数：${result.counter_all}`);
+            showLog(`今日已用小马：${result.counter}`)
+            showLog(`本次小马为：${result.pony}`);
+            showLog(`判断答案为：${result.answer}`);
+            if (rp=="A"||rp=="B"||rp=="C"){
+                gE('#riddleanswer').value=rp
+                gE('#riddleanswer+img').click()
+            }else {
+                showLog('答案出错');
+            }
+        }else if (back.code == 1){
+            showLog(`您的小马余额：${back.timesleft}`)
+            showLog(`您的小马总数：${back.timesall}`);
+            showLog('余额已不足，请及时联系管理员')
+        }else if (back.code == 2){
+            showLog('权限验证错误，请检查账户密码')
         }
-        showLog(`您的小马总数：${back.timesall}`);
-        showLog(`本次已用小马：${back.time}`)
-        showLog(`您的小马剩余：${back.timesleft}`)
-        showLog(`判断小马为：${back.pony}`);
-        showLog(`判断小马用时：${back.time_pony}`);
-        //showLog(`服务器用时：${back.time}`);
-        showLog(`判断答案为：${back.answer}`);
     },
   });
 }
