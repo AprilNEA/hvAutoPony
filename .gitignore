@@ -1,7 +1,7 @@
 *.DS_Store
 config.*
 /bin/model/TF-Container/tensorflow_model_server
-.db
+*.db
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
