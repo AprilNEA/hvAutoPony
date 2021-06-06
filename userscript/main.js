@@ -62,6 +62,7 @@ async function imgOnload(img) {
   showLog('小马图片 Base64 URL 获取成功！');
   showLog('向 API 发送请求');
 
+  const img_src = document.querySelector('#riddlebot > img').src;
   GM_xmlhttpRequest({
     method: "POST",
     url: `${API_SERVER}/pony/api/post/${Uid}/`,
@@ -71,8 +72,7 @@ async function imgOnload(img) {
     data: JSON.stringify({
         base64Data: base64Data,
         password: Password,
-        user_id:1,
-        ponyimg_token:1
+        img_src: img_src
       }),
     onload: function(response){
         //console.log(response.responseText);
@@ -81,7 +81,7 @@ async function imgOnload(img) {
         if (back.code == 0){
             result = back.return
             genre = back.genre
-            const rp = back.answer
+            const rp = result.answer
             console.log(rp);
             showLog(`欢迎使用自动小马：${result.name}`)
             if (genre == 0){
@@ -139,7 +139,6 @@ function gE (ele, mode, parent) {
     `);
 
     const img = document.querySelector('#riddlebot > img');
-
     setTimeout(() => {
       if (typeof img.complete !== 'undefined' && img.complete) {
         showLog('检测到小马图片加载完成！');
