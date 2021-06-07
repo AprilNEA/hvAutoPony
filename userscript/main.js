@@ -26,8 +26,8 @@
 // ==/UserScript==
 
 
-const Uid = ''
-const Password =''
+const Uid = '0'
+const Password ='781898'
 
 // ====== DO NOT EDIT THIS LINE BELOW ===== //
 const API_SERVER = 'http://127.0.0.1:5001';
@@ -81,8 +81,6 @@ async function imgOnload(img) {
         if (back.code == 0){
             result = back.return
             genre = back.genre
-            const rp = result.answer
-            console.log(rp);
             showLog(`欢迎使用自动小马：${result.name}`)
             if (genre == 0){
                 showLog('账户类型：永久使用')
@@ -94,12 +92,13 @@ async function imgOnload(img) {
             showLog(`今日已用小马：${result.counter}`)
             showLog(`本次小马为：${result.pony}`);
             showLog(`判断答案为：${result.answer}`);
-            if (rp=="A"||rp=="B"||rp=="C"){
-                gE('#riddleanswer').value=rp
-                gE('#riddleanswer+img').click()
-            }else {
-                showLog('答案出错');
-            }
+            setTimeout(() => {
+                const inputEL = document.getElementById('riddleanswer');
+                if (inputEL){
+                    inputEL.value = result.answer;
+                    document.getElementById('riddleform')?.submit();
+                }
+            }, 100)
         }else if (back.code == 1){
             showLog(`您的小马余额：${back.timesleft}`)
             showLog(`您的小马总数：${back.timesall}`);
@@ -111,17 +110,6 @@ async function imgOnload(img) {
   });
 }
 
-function gE (ele, mode, parent) {
-    if (typeof ele === 'object') {
-      return ele
-    } else if (mode === undefined && parent === undefined) {
-      return (isNaN(ele * 1)) ? document.querySelector(ele) : document.getElementById(ele)
-    } else if (mode === 'all') {
-      return (parent === undefined) ? document.querySelectorAll(ele) : parent.querySelectorAll(ele)
-    } else if (typeof mode === 'object' && parent === undefined) {
-      return mode.querySelector(ele)
-    }
-  }
 (async () => {
   if (document.getElementById('riddlecounter')) {
     GM_addStyle(`
