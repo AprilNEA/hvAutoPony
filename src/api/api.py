@@ -21,6 +21,7 @@ from src.db import sqlite
 from src.lib import logger
 from src.lib import checker
 from src.lib import assort
+from src.lib import generater
 
 from typing import Optional
 
@@ -80,7 +81,7 @@ class User():
 def send_testpony_token(token: Optional[str] = None):
     if not token:
         token_new = ''.join(random.sample('0123456789zyxwvutsrqponmlkjihgfedcba', 7))
-        with open(settings.PublicDirectory,"pony_img/token.json","r+w") as f:
+        with open(settings.PublicDirectory, "pony_img/token.json", "r+w") as f:
             if f:
                 token_all = json.load(f)
                 for token, time_add in token_all.item():
@@ -97,9 +98,17 @@ def send_testpony_token(token: Optional[str] = None):
                 del token_all[token]
                 f.write(json.dumps(token_all))
                 return FileResponse(os.path.join(settings.PublicDirectory,
-                                                f"pony_img/pony1000/{random.randint(1, 1000)}.jpg"))
+                                                 f"pony_img/pony1000/{random.randint(1, 1000)}.jpg"))
             else:
                 pass
+
+
+@app.get("/pony/script/{uid}/{password}")
+def get_script(uid: int, password: str):
+    if sqlite.user_exist(uid, password):
+        return FileResponse(generater.generete_script(uid, password))
+    else:
+        return {"return": "权限错误"}
 
 
 @app.post("/pony/api/post/{uid}/")
