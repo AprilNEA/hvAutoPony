@@ -1,16 +1,12 @@
 ## AutoPony 自动小马
 
-### api-server
-目前主要部署的服务器内容
+![Demo](https://raw.githubusercontent.com/SpaceHV/hvAutoPony/fastapi/docs/demo.gif?token=AJBXYFJNDWRS2RVWC3ATQ53AXVYOY)
 
-
-### edge-Model
-小马模型
-
-### pony-Assort
-OpenCV
-小马选项识别
-
-### pony-Get
-
-获取小马图片（考虑删除）
+TODO LIST
+- [x] 用FastAPI重构
+- [ ] 验证用户UID
+- [x] 数据库优化
+- [x] 验证马图存在性
+- [ ] 提供脚本一键生成
+- [ ] Web查询 充值
+- [ ] 专属测试网站Token
