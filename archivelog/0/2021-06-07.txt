@@ -1,0 +1,6 @@
+{"time": "2021-06-07 00:19:59", "user": {"uid": 0, "name": "0000", "genre": 0, "ip": "127.0.0.1", "real_uid": 0}, "pony": {"counter": 976843, "counter_all": 23269, "charges": 976844, "answer": "B", "pony": "TS"}},
+{"time": "2021-06-07 00:20:52", "user": {"uid": 0, "name": "0000", "genre": 0, "ip": "127.0.0.1", "real_uid": 0}, "pony": {"counter": 976843, "counter_all": 23270, "charges": 976844, "answer": "B", "pony": "RD"}},
+{"time": "2021-06-07 00:21:02", "user": {"uid": 0, "name": "0000", "genre": 0, "ip": "127.0.0.1", "real_uid": 0}, "pony": {"counter": 976843, "counter_all": 23271, "charges": 976844, "answer": "B", "pony": "AP"}},
+{"time": "2021-06-07 00:21:09", "user": {"uid": 0, "name": "0000", "genre": 0, "ip": "127.0.0.1", "real_uid": 0}, "pony": {"counter": 976843, "counter_all": 23272, "charges": 976844, "answer": "B", "pony": "AP"}},
+{"time": "2021-06-07 00:37:38", "user": {"uid": 0, "name": "0000", "genre": 0, "ip": "127.0.0.1", "real_uid": 0}, "pony": {"counter": 976843, "counter_all": 23273, "charges": 976844, "answer": "B", "pony": "RD"}},
+{"time": "2021-06-07 00:39:50", "user": {"uid": 0, "name": "0000", "genre": 0, "ip": "127.0.0.1", "real_uid": 0}, "pony": {"counter": 976843, "counter_all": 23274, "charges": 976844, "answer": "C", "pony": "AP"}},
