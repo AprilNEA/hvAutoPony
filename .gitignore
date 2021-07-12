@@ -3,6 +3,7 @@ config.*
 /bin/model/TF-Container/tensorflow_model_server
 *.db
 venv/*
+.idea\*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
